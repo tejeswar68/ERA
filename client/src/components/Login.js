@@ -18,7 +18,7 @@ function Login() {
 
     const onFormSubmit = (userCredObj) => {
         const sendRequest = async () => {
-            const res = await axios.post("https://era68.herokuapp.com/login", {
+            const res = await axios.post("https://era68.herokuapp.com/api/user/login", {
                 email: userCredObj.email,
                 password: userCredObj.password
             }).catch(errors => setCheck(true));
