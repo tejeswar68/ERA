@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '../store';
@@ -10,21 +10,20 @@ import loginpic from './images/3d1.png'
 
 function Login() {
     const dispath = useDispatch();
+    const[check,setCheck] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
 
 
     const onFormSubmit = (userCredObj) => {
-        console.log(userCredObj);
         const sendRequest = async () => {
             const res = await axios.post("http://localhost:5005/api/user/login", {
                 email: userCredObj.email,
                 password: userCredObj.password
-            }).catch(errors => console.log(errors));
+            }).catch(errors => setCheck(true));
 
             const data = await res.data;
-            console.log(data);
             return data;
 
         }
@@ -32,6 +31,7 @@ function Login() {
             .then((data) => localStorage.setItem("userId", data.user._id))
             .then(() => dispath(authActions.login()))
             .then(() => navigate("/blogs"))
+            .then(()=>setCheck(false))
 
     }
 
@@ -61,11 +61,12 @@ function Login() {
                             {/* password */}
                             <div className="mb-3">
                                 <label htmlFor="password" className='mt-3 mb-1 d-block m-auto'>Password</label>
-                                <input type="password" style={{ borderRadius: '15px' }} id="password" className="form-control" {...register("password", { required: true, maxLength: 28, minLength: 4 })} />
+                                <input type="password" style={{ borderRadius: '15px' }} id="password" className="form-control" {...register("password", { required: true, maxLength: 28, minLength: 8 })} />
                                 {/* validation error msg for password */}
-                                {errors.password?.type === 'required' && <p className='text-danger'>* Password required</p>}
-                                {errors.password?.type === 'minLength' && <p className='text-danger'>* Min length should be 4</p>}
-                                {errors.password?.type === 'maxLength' && <p className='text-danger'>* Max length should be 28</p>}
+                                {check && <p className='text-danger'>*Invalid User Credentials</p>}
+                                {errors.password?.type === 'required' && <p className='text-danger'>*Password required</p>}
+                                {errors.password?.type === 'minLength' && <p className='text-danger'>*Min length should be 8</p>}
+                                {errors.password?.type === 'maxLength' && <p className='text-danger'>*Max length should be 28</p>}
                             </div>
                             {/* login button */}
                             <div className='mb-1 text-center'>

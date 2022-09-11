@@ -7,12 +7,12 @@ import Bloghome from '../images/bloghome.png'
 import todohome from '../images/todohome.png'
 import {Row,Col,Button} from 'react-bootstrap';
 import {useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import homeimage from '../images/3d2.png';
 import homeimage2 from '../images/wave2.png';
 function Home() {
   
-  const navigate =     useNavigate();
+  // const navigate =     useNavigate();
   
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   return (

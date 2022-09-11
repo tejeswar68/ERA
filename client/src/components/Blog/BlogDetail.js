@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import updateblogimg from "../images/updateblogs.png";
+import { Col, Row } from 'react-bootstrap';
 
 function BlogDetail() {
 
@@ -37,25 +39,27 @@ function BlogDetail() {
   }
   return (
     <div><div className='row'>
-      <div className="col-11 col-sm-8 col-md-5 mx-auto mt-5 mb-4">
-        <form className='border p-4 bg-transaparent border-warning bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ color: 'orange' }}>
-          <div className='mb-3'>
+      <div className=" col-sm-8 col-md-6 mx-auto mt-5 mb-4">
+        <form className='p-4 bg-transaparent bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ color: '#078e71' ,border:"3px solid #078e71"}} >
+          <Row>
+            <Col xs={12} md={6}> <img src={updateblogimg} alt="" className='w-100 h-100 mb-3' /> </Col>
+            <Col> <div className='mb-3'>
             <p className='display-6 text-center'>UPDATE BLOG</p>
             <hr />
           </div>
 
           {/* username */}
-          <div className="mb-3">
-            <label htmlFor="title" >Title</label>
+          <div className="m-3">
+            <label htmlFor="title m-4" >Title</label>
             <input type="text" style={{ borderRadius: '15px' }} id="title" className="form-control" {...register("title", { required: true })} />
 
             {errors.name?.type === 'required' && <p className='text-danger'>* Username required</p>}
 
           </div>
           {/* email */}
-          <div className="mb-3">
-            <label htmlFor="description">Description</label>
-            <input type="text" style={{ borderRadius: '15px' }} id="description" className="form-control" {...register("description", { required: true })} />
+          <div className="m-3">
+            <label htmlFor="description m-4">Description</label>
+            <textarea type="text" style={{ borderRadius: '15px' }} id="description" className="form-control" {...register("description", { required: true })} />
 
             {errors.email?.type === 'required' && <p className='text-danger'>*Description required</p>}
           </div>
@@ -64,8 +68,10 @@ function BlogDetail() {
 
           {/* submit button */}
           <div className='mb-0 text-center'>
-            <button type="submit" style={{ borderRadius: '15px', backgroundColor: 'orange', color: 'black' }} className="btn w-50 mb-1">UPDATE</button>
-          </div>
+            <button type="submit" style={{ borderRadius: '15px', backgroundColor: '#078e71', color: 'black' }} className="btn w-50 m-4">UPDATE</button>
+          </div></Col>
+          </Row>
+         
         </form>
       </div>
     </div></div>

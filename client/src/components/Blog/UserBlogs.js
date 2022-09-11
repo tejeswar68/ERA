@@ -29,9 +29,9 @@ function UserBlogs() {
     <div className='container-fluid'>{user && user.blogs && user.blogs.map((blog, index) =>
      
       <Row>
-          <Col  md={2}><div className='blog-blur'></div></Col>
-          <Col xs={12} md={8}> <Blog key={index} id={blog._id} title={blog.title} description={blog.description} image={blog.image} userName={user.name} isUser={true} flag={flag} reloadStories={reloadStories} /></Col>
-          <Col  md={2}><div className='blog-blur'></div></Col>
+          <Col  md={4}><div className='blog-blur-1'></div></Col>
+          <Col xs={12} md={4}> <Blog key={index} id={blog._id} title={blog.title} description={blog.description} image={blog.image} userName={user.name} isUser={true} flag={flag} reloadStories={reloadStories} /></Col>
+          <Col  md={4}><div className='blog-blur-2'></div></Col>
         </Row>
       
      
@@ -49,7 +49,7 @@ function UserBlogs() {
        <h1>Ummm...</h1>
       <hr className='w-50 d-block mx-auto'/>
       <h2>Looks Like You Have Added Nothing In The Blogs</h2>
-      <Button href='addblogs' variant='outline-secondary' size='lg' className='m-3 w-50 mx-auto d-block'>ADD A BLOG</Button>
+      <Button href='addblogs' variant='secondary' size='lg' className='m-3 w-50 mx-auto d-block'>ADD A BLOG</Button>
  </div>
       </Col>
       <Col md={3}/>

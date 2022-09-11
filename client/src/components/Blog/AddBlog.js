@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import addblogimg from "../images/addblog.png";
+import { Row, Col } from 'react-bootstrap';
 // import '../CSS/AddBlogs.css'
 
 function AddBlog() {
@@ -27,46 +29,53 @@ function AddBlog() {
     <div id="reg" className='addblog m-5'>
       <div className='container'>
         <div className='row'>
-          <div className="col-11 col-sm-8 col-md-5 mx-auto mt-5 mb-4" >
-            <form className='border p-4 bg-transparent border-warning bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ backgroundColor: '#656565', color: 'orange', borderColor: 'orange' }}>
-              <div className='mb-3'>
-                <p className='display-6 text-center'>ADD BLOG</p>
-                <hr />
-              </div>
+          <div className="col-sm-12 col-md-10 mx-auto mt-5 mb-4" >
+            <form className='p-4 bg-transparent bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ backgroundColor: '#8e29ae', color: '#7e37db', border:'3px solid #7e37db'}}>
+              <Row>
+                <Col xs={12} md={6}><img src={addblogimg} alt="" className='w-100' /></Col>
+                
+                <Col xs={12} md={6}>
+                  <div className='m-3'>
+                    <p className='display-6 text-center m-3'>ADD BLOG</p>
+                    <hr  />
+                  </div>
 
-              {/* username */}
-              <div className="mb-3">
-                <label htmlFor="title" >Title</label>
-                <input type="text" style={{ borderRadius: '15px' }} id="title" className="form-control" {...register("title", { required: true })} />
+                  {/* username */}
+                  <div className="m-3">
+                    <label htmlFor="title m-2" >Title</label>
+                    <input type="text" style={{ borderRadius: '15px' }} id="title" className="form-control" {...register("title", { required: true })} />
 
-                {errors.name?.type === 'required' && <p className='text-danger'>* Username required</p>}
+                    {errors.name?.type === 'required' && <p className='text-danger'>*Username required</p>}
 
-              </div>
-              {/* email */}
-              <div className="mb-3">
-                <label htmlFor="description">Description</label>
-                <textarea type="text" style={{ borderRadius: '15px' }} id="description" className="form-control" {...register("description", { required: true })} />
+                  </div>
+                  {/* email */}
+                  <div className="m-4">
+                    <label htmlFor="description m-2">Description</label>
+                    <textarea type="text" style={{ borderRadius: '15px' }} id="description" className="form-control" {...register("description", { required: true })} />
 
-                {errors.email?.type === 'required' && <p className='text-danger'>*Description required</p>}
-              </div>
+                    {errors.email?.type === 'required' && <p className='text-danger'>*Description required</p>}
+                  </div>
 
-              {/* Image URL */}
-              <div className="mb-3">
-                <label htmlFor="image">Image URL</label>
-                <input type="text" style={{ borderRadius: '15px' }} id="image" className="form-control" {...register("image", { required: true })} />
+                  {/* Image URL */}
+                  <div className="m-3">
+                    <label htmlFor="image m-2">Image URL</label>
+                    <input type="text" style={{ borderRadius: '15px' }} id="image" className="form-control" {...register("image", { required: true })} />
 
-                {errors.password?.type === 'required' && <p className='text-danger'>*Image URL required</p>}
-              </div>
+                    {errors.password?.type === 'required' && <p className='text-danger'>*Image URL required</p>}
+                  </div>
 
-              {/* submit button */}
-              <div className='mb-0 text-center'>
-                <button type="submit" style={{ borderRadius: '15px', backgroundColor: '#f48915', color: 'white' }} className="btn w-50 mb-1">ADD</button>
-              </div>
+                  {/* submit button */}
+                  <div className='mb-0 text-center'>
+                    <button type="submit" style={{ borderRadius: '15px', color: '#7e37db',border:'1px solid #7e37db'  }} className="btn w-50 m-3">ADD</button>
+                  </div></Col>
+              </Row>
+
+
             </form>
           </div>
         </div>
       </div>
-      
+
     </div>
   )
 }

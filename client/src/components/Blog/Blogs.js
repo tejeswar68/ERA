@@ -25,14 +25,14 @@ function Blogs() {
     sendRequest().then(data => setBlogs(data.blogs));
   }, [flag])
   return (
-    <div className='container-fluid'>
-      
+    <div className='container-fluid' >
+   
       {blogs && blogs.map((blog, index) =>
         (
         <Row>
-          <Col  md={2}><div className='blog-blur'></div></Col>
-          <Col xs={12} md={8}><Blog id={blog._id} isUser={localStorage.getItem("userId") === blog.user._id} key={index} title={blog.title} description={blog.description} image={blog.image} userName={blog.user.name} reloadStories={reloadStories}  className='mb-5'/></Col>
-          <Col  md={2}><div className='blog-blur'></div></Col>
+          <Col  md={4}><div className='blog-blur-1'>   </div></Col>
+          <Col xs={12} className='blog-main' md={4}><Blog id={blog._id} isUser={localStorage.getItem("userId") === blog.user._id} key={index} title={blog.title} description={blog.description} image={blog.image} userName={blog.user.name} reloadStories={reloadStories}  className='mb-5'/></Col>
+          <Col  md={4}><div className='blog-blur-2'></div></Col>
         </Row>
         
         )

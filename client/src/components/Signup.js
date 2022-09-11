@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { Col ,Row} from 'react-bootstrap';
-
+import Signuppic from './images/signup.png';
 
 
 function SignUp() {
@@ -37,20 +37,24 @@ function SignUp() {
         <div id="reg">
             <div className='container'>
                 <div className='row'>
-                    <div className="col-11 col-sm-8 col-md-5 mx-auto mt-5 mb-4">
-                        <form className='border p-4 border-warning bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ color: 'orange' }}>
-                            <div className='mb-3'>
-                                <p className='display-6 text-center'>ENROLL THE ERAVERSE!</p>
+                    <div className="col-sm-12 col-md-10 mx-auto mt-5 mb-4">
+                        <form className='p-4 bg-opacity-50 shadow rounded-3' onSubmit={handleSubmit(onFormSubmit)} style={{ color: '#c9e74e',border:'3px solid #c9e74e' }}>
+                            <Row>
+                                <Col md={6} xs={12}> <img src={Signuppic} className='w-100' alt="" /></Col>
+                              
+                                <Col  md={6} xs={12}>
+                                <div className='mb-3'>
+                                <p className='display-6 text-center m-4'>ENROLL THE ERAVERSE!</p>
                             </div>
                             <hr />
                             {/* username */}
                             <div className="mb-3">
                                 <label htmlFor="name">Name</label>
-                                <input type="text" style={{ borderRadius: '15px' }} id="name" className="form-control" {...register("name", { required: true, minLength: 4, maxLength: 16 })} />
+                                <input type="text" style={{ borderRadius: '15px' }} id="name" className="form-control" {...register("name", { required: true, minLength: 4, maxLength: 26 })} />
                                 {/* validation error msg for username */}
                                 {errors.name?.type === 'required' && <p className='text-danger'>* Username required</p>}
                                 {errors.name?.type === 'minLength' && <p className='text-danger'>* Min length should be 4</p>}
-                                {errors.name?.type === 'maxLength' && <p className='text-danger'>* Max length should be 16</p>}
+                                {errors.name?.type === 'maxLength' && <p className='text-danger'>* Max length should be 26</p>}
                             </div>
                             {/* email */}
                             <div className="mb-3">
@@ -73,7 +77,7 @@ function SignUp() {
                             <div className="mb-4">
                                 <div className="form-check">
                                     <input type="checkbox" id="t&c" className="form-check-input" {...register("tc", { required: true })} value="t&c" />
-                                    <label htmlFor="t&c" className="form-check-label">I accept all the <a href="#">Terms and conditions</a></label>
+                                    <label htmlFor="t&c" className="form-check-label">I accept all the <a href="/">Terms and conditions</a></label>
                                     {
                                         errors.tc?.type === 'required' && <p className='text-danger'>* You Should Accept T & C</p>
                                     }
@@ -81,9 +85,14 @@ function SignUp() {
                             </div>
                             {/* submit button */}
                             <div className='mb-0 text-center'>
-                                <button type="submit" style={{ borderRadius: '15px', backgroundColor: 'orange', color: 'black' }} className="btn  w-50 mb-1">Register</button>
-
+                                <button type="submit" style={{ borderRadius: '15px', color: '#c9e74e',border:'1px solid #c9e74e '}}  className="btn  w-25 mb-1">Signup</button>
+                                  
                             </div>
+                                
+                                </Col>
+
+                            </Row>
+                          
                         </form>
                     </div>
                 </div>

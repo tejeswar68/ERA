@@ -17,10 +17,10 @@ function Header() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-           { isLoggedIn && <NavDropdown title="BLOGSHUB" style={{color:'#3c3f45'}} >
-              <NavDropdown.Item  className='text-light' href="/blogs" style={{backgroundColor:'#3c3f45'}}>ALL BLOGS</NavDropdown.Item>
-              <NavDropdown.Item className='text-light' href="/myblogs" style={{backgroundColor:'#3c3f45'}}>MY BLOGS</NavDropdown.Item>
-              <NavDropdown.Item className='text-light' href="/addblogs" style={{backgroundColor:'#3c3f45'}}>ADD BLOGS</NavDropdown.Item>
+           { isLoggedIn && <NavDropdown title="BLOGSHUB" style={{backgroundColor:'black'}} >
+              <NavDropdown.Item   href="/blogs" >ALL BLOGS</NavDropdown.Item>
+              <NavDropdown.Item  href="/myblogs" >MY BLOGS</NavDropdown.Item>
+              <NavDropdown.Item  href="/addblogs" >ADD BLOGS</NavDropdown.Item>
             </NavDropdown>}
            {isLoggedIn && <Nav.Link disabled href='todos' >TODOS</Nav.Link>}
   

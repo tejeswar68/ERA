@@ -24,6 +24,10 @@
   height: 5rem;
   left: 20%;
 }
+.blog-main
+{
+  padding: 0px;
+}
 .footer-blur-2
 {
   background: rgba(113, 4, 255, 0.69);
