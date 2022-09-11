@@ -9,7 +9,7 @@ function UserBlogs() {
 
   const id = localStorage.getItem("userId");
   const sendRequest = async () => {
-    const res = await axios.get(`http://localhost:5005/api/blog/user/${id}`).catch(err => console.log(err));
+    const res = await axios.get(`https://era68.herokuapp.com/api/blog/user/${id}`).catch(err => console.log(err));
     const data = res.data;
     return data;
   }

@@ -13,7 +13,7 @@ function SignUp() {
 
     const onFormSubmit = (userObj) => {
         const sendRequest = async () => {
-            const res = await axios.post("http://localhost:5005/api/user/signup", {
+            const res = await axios.post("https://era68.herokuapp.com/api/user/signup", {
                 name: userObj.name,
                 email: userObj.email,
                 password: userObj.password

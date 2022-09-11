@@ -15,7 +15,7 @@ function BlogDetail() {
   // eslint-disable-next-line
   const [blog, setBlog] = useState();
   const fetchDetails = async () => {
-    const res = await axios.get(`http://localhost:5005/api/blog/${id}`)
+    const res = await axios.get(`https://era68.herokuapp.com/api/blog/${id}`)
       .catch(err => console.log(err));
     const data = await res.data;
     return data;
@@ -29,7 +29,7 @@ function BlogDetail() {
   const onFormSubmit = (blogdetail) => {
 
     const sendRequest = async () => {
-      const res = await axios.put(`http://localhost:5005/api/blog/update/${id}`,
+      const res = await axios.put(`https://era68.herokuapp.com/api/blog/update/${id}`,
         {
           title: blogdetail.title,
           description: blogdetail.description

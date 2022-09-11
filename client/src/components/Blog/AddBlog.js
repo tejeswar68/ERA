@@ -13,7 +13,7 @@ function AddBlog() {
   const onFormSubmit = (blogdetail) => {
     console.log(blogdetail);
     const sendRequest = async () => {
-      const res = await axios.post("http://localhost:5005/api/blog/add",
+      const res = await axios.post("https://era68.herokuapp.com/api/blog/add",
         {
           title: blogdetail.title,
           description: blogdetail.description,

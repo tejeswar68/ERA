@@ -9,7 +9,7 @@ function Blogs() {
   const [blogs, setBlogs] = useState();
   const [flag, setFlag] = useState(false);
   const sendRequest = async () => {
-    const res = await axios.get("http://localhost:5005/api/blog")
+    const res = await axios.get("https://era68.herokuapp.com/api/blog")
       .catch(err => console.log(err));
     const data = res.data;
     return data;
