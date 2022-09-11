@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/blog", blogRouter);
-
+const __dirname = path.resolve();
 //Serve Static assets if in production
 if(process.env.NODE_ENV === 'production')
 {
