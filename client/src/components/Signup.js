@@ -12,23 +12,15 @@ function SignUp() {
 
 
     const onFormSubmit = (userObj) => {
-
-        console.log(userObj);
         const sendRequest = async () => {
             const res = await axios.post("http://localhost:5005/api/user/signup", {
                 name: userObj.name,
                 email: userObj.email,
                 password: userObj.password
             }).catch(errors => console.log(errors));
-            const data = await res.data;
-            console.log(data);
-            return data;
-
         }
         sendRequest()
             .then(() => navigate('/login'));
-
-
 
     }
 

@@ -12,7 +12,6 @@ function Blogs() {
     const res = await axios.get("http://localhost:5005/api/blog")
       .catch(err => console.log(err));
     const data = res.data;
-    console.log(data);
     return data;
   }
   const reloadStories = (flag) => {
