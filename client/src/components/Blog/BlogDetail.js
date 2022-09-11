@@ -7,10 +7,12 @@ import updateblogimg from "../images/updateblogs.png";
 import { Col, Row } from 'react-bootstrap';
 
 function BlogDetail() {
+  
 
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const id = useParams().id;
+  // eslint-disable-next-line
   const [blog, setBlog] = useState();
   const fetchDetails = async () => {
     const res = await axios.get(`http://localhost:5005/api/blog/${id}`)
@@ -19,8 +21,9 @@ function BlogDetail() {
     return data;
   }
   useEffect(() => {
-    fetchDetails().then((data) => setBlog(data.blog))
+    fetchDetails().then((data) => setBlog(data.blog)) // eslint-disable-next-line
   }, [id]);
+  // console.log(blog);
 
 
   const onFormSubmit = (blogdetail) => {

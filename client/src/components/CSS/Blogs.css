@@ -26,6 +26,34 @@
   right: 80%;
 }
 } 
+@media screen and (max-width:579px)
+{
+.blog-blur-1
+{
+  background: rgba(229, 7, 245, 0.69);
+  /* position: absolute;  */
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -5;
+  width: 20rem;
+  height: 5rem;
+  top: 10%;
+  right:80%;
+}
+.blog-blur-2
+{
+  background: rgba(97, 10, 248, 0.69);
+
+  /* position: absolute;  */
+  border-radius: 80%;
+  filter: blur(70px);
+  z-index: -9;
+  width: 20rem;
+  height: 5rem;
+  top: 20%;
+  left: 70%;
+}
+} 
 
 
 
