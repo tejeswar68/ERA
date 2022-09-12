@@ -38,8 +38,8 @@ function Blogs() {
       )}
      { blogs && blogs.length===0 && 
       <Row>
-      <Col md={3}/>
-      <Col xs={12} md={6} classname='m-auto'>
+      <Col sm={2}/>
+      <Col xs={12} sm={8} classname='m-auto'>
       <div className='container-fluid text-white mt-5 mb-5 text-center'>
        <h1>Ummm...</h1>
       <hr className='w-50 d-block mx-auto'/>
@@ -47,7 +47,7 @@ function Blogs() {
       <Button href='addblogs' variant='outline-warning' size='lg' className='m-3 w-50 mx-auto d-block'>ADD A BLOG</Button>
  </div>
       </Col>
-      <Col md={3}/>
+      <Col sm={2}/>
     </Row>
     
      }

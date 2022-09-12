@@ -19,7 +19,6 @@ function App() {
   const dispath = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
-  console.log(isLoggedIn);
   useEffect(() => {
     if (localStorage.getItem("userId")) {
       dispath(authActions.login());

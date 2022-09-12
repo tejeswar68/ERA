@@ -4,15 +4,23 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import addblogimg from "../images/addblog.png";
 import { Row, Col } from 'react-bootstrap';
+import useButtonLoader from '../useButtonLoader';
 // import '../CSS/AddBlogs.css'
 
 function AddBlog() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const[addBlogButton,setButtonLoading] = useButtonLoader(
+    "ADD",
+    "ADDING..."
+  );
+ 
+  
 
   const navigate = useNavigate();
   const onFormSubmit = (blogdetail) => {
     console.log(blogdetail);
     const sendRequest = async () => {
+      setButtonLoading(true);
       const res = await axios.post("https://era68.herokuapp.com/api/blog/add",
         {
           title: blogdetail.title,
@@ -23,7 +31,9 @@ function AddBlog() {
       const data = res.data;
       return data;
     }
-    sendRequest().then(() => navigate('/myblogs'));
+    sendRequest()
+      .then(()=>setButtonLoading(false))
+      .then(() => navigate('/myblogs'));
   }
   return (
     <div id="reg" className='addblog m-5'>
@@ -42,31 +52,31 @@ function AddBlog() {
 
                   {/* username */}
                   <div className="m-3">
-                    <label htmlFor="title m-2" >Title</label>
+                    <label htmlFor="title" >Title</label>
                     <input type="text" style={{ borderRadius: '15px' }} id="title" className="form-control" {...register("title", { required: true })} />
 
-                    {errors.name?.type === 'required' && <p className='text-danger'>*Username required</p>}
+                    {errors.title?.type === 'required' && <p className='text-danger'>*Title required</p>}
 
                   </div>
                   {/* email */}
                   <div className="m-4">
-                    <label htmlFor="description m-2">Description</label>
+                    <label htmlFor="description">Description</label>
                     <textarea type="text" style={{ borderRadius: '15px' }} id="description" className="form-control" {...register("description", { required: true })} />
 
-                    {errors.email?.type === 'required' && <p className='text-danger'>*Description required</p>}
+                    {errors.description?.type === 'required' && <p className='text-danger'>*Description required</p>}
                   </div>
 
                   {/* Image URL */}
                   <div className="m-3">
-                    <label htmlFor="image m-2">Image URL</label>
+                    <label htmlFor="image">Image URL</label>
                     <input type="text" style={{ borderRadius: '15px' }} id="image" className="form-control" {...register("image", { required: true })} />
 
-                    {errors.password?.type === 'required' && <p className='text-danger'>*Image URL required</p>}
+                    {errors.image?.type === 'required' && <p className='text-danger'>*Image URL required</p>}
                   </div>
 
                   {/* submit button */}
                   <div className='mb-0 text-center'>
-                    <button type="submit" style={{ borderRadius: '15px', color: '#7e37db',border:'1px solid #7e37db'  }} className="btn w-50 m-3">ADD</button>
+                    <button type="submit" ref={addBlogButton} style={{ borderRadius: '15px', color: '#7e37db',border:'1px solid #7e37db'  }} className="btn w-50 m-3"/>
                   </div></Col>
               </Row>
 

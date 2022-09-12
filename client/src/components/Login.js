@@ -6,11 +6,13 @@ import { authActions } from '../store';
 import { useDispatch } from 'react-redux';
 import {Row,Col,Button} from 'react-bootstrap'
 import loginpic from './images/3d1.png'
+import useButtonLoader from './useButtonLoader';
 // import Particles from 'react-particles-js';
 
 function Login() {
     const dispath = useDispatch();
     const[check,setCheck] = useState(false);
+    const[loginButton,isLoading] = useButtonLoader("Login","Logging In...");
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
@@ -18,6 +20,7 @@ function Login() {
 
     const onFormSubmit = (userCredObj) => {
         const sendRequest = async () => {
+            isLoading(true);
             const res = await axios.post("https://era68.herokuapp.com/api/user/login", {
                 email: userCredObj.email,
                 password: userCredObj.password
@@ -30,6 +33,7 @@ function Login() {
         sendRequest()
             .then((data) => localStorage.setItem("userId", data.user._id))
             .then(() => dispath(authActions.login()))
+            .then(()=>isLoading(false))
             .then(() => navigate("/blogs"))
             .then(()=>setCheck(false))
 
@@ -71,7 +75,7 @@ function Login() {
                             {/* login button */}
                             <div className='mb-1 text-center'>
                                 {/* <button type="submit" className="btn  w-50 mb-1" style={{ borderRadius: '15px', backgroundColor: 'orange', color: '' }}>Login</button> */}
-                                <Button type='submit' variant='outline-info' size="lg">Login</Button>
+                                <Button type='submit' ref={loginButton} variant='outline-info' size="lg"/>
                             </div>
                             <div className='row mt-4'>
                                 <div className='col-6 text-end mt-2'>
@@ -79,7 +83,7 @@ function Login() {
                                 </div>
                                 <div className='col-6 text-start'>
                                     {/* <Button href="signup" className='  border-warning border' style={{ borderRadius: '15px', color: 'black' ,backgroundColor:'yellow'}}>SIGNUP</Button> */}
-                                    <Button href="signup" variant='outline-info'>Signup</Button>
+                                    <Button href="signup"  variant='outline-info'>Signup</Button>
                                 </div>
 
                             </div>
