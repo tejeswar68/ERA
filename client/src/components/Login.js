@@ -24,7 +24,8 @@ function Login() {
             const res = await axios.post("https://era68.herokuapp.com/api/user/login", {
                 email: userCredObj.email,
                 password: userCredObj.password
-            }).catch(errors => setCheck(true));
+            }).catch(errors => {setCheck(true);
+            isLoading(false)});
 
             const data = await res.data;
             return data;
