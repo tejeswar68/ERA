@@ -21,7 +21,7 @@ function AddBlog() {
     console.log(blogdetail);
     const sendRequest = async () => {
       setButtonLoading(true);
-      const res = await axios.post("https://era6.herokuapp.com/api/blog/add",
+      const res = await axios.post("https://era68.herokuapp.com/api/blog/add",
         {
           title: blogdetail.title,
           description: blogdetail.description,
