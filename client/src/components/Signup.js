@@ -10,7 +10,7 @@ import useButtonLoader from './useButtonLoader';
 function SignUp() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const[signupButton,setLoading] = useButtonLoader("Signup","Processing...")
+    const[signupButtonn,setLoading] = useButtonLoader("Signup","Processing...")
 
 
     const onFormSubmit = (userObj) => {
@@ -84,7 +84,7 @@ function SignUp() {
                             </div>
                             {/* submit button */}
                             <div className='mb-0 text-center'>
-                                <button type="submit" ref={signupButton} style={{ borderRadius: '15px', color: '#c9e74e',border:'1px solid #c9e74e '}}  className="btn  w-50 mb-1"/>
+                                <button type="submit" ref={signupButtonn} style={{ borderRadius: '15px', color: '#c9e74e',border:'1px solid #c9e74e '}}  className="btn  w-50 mb-1"/>
                                   
                             </div>
                                 
