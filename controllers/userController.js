@@ -15,6 +15,23 @@ export const getAllUser = async(req,res,next)=>
     }
     return res.status(200).json({users});
 }
+export const getAllUserId = async(req,res,next)=>
+{
+    let users;
+    try {
+        users = await User.find();
+    } catch (error) {
+        console.log(error);
+    }
+    if(!users)
+    {
+        return res.status(404).json({message:"No users found"});
+    }
+    let userIds=[];
+    users.map((user)=>userIds.push(user._id))
+    return res.status(200).json({userIds});
+}
+
 
 export const signUp = async(req,res,next)=>
 {

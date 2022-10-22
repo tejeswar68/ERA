@@ -1,13 +1,15 @@
 import React from 'react'
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {Row,Col} from 'react-bootstrap'
 
+
 function Blog({ title, description, image, userName, isUser, id, flag, reloadStories }) {
 
+  
   const navigate = useNavigate();
   const handleEdit = () => {
     navigate(`/myblogs/${id}`)
@@ -23,6 +25,7 @@ function Blog({ title, description, image, userName, isUser, id, flag, reloadSto
     deleteRequest(id)
       .then(() => reloadStories(!flag));
   }
+
   return (
     <Row>
       <Col xs={12} md={12}  className='m-auto'>
@@ -45,7 +48,12 @@ function Blog({ title, description, image, userName, isUser, id, flag, reloadSto
             {description}
           </Card.Text>
         </Card.Body>
+        {/* <hr />
+       {isUser && <Card.Footer>
+          <Button className='d-block ms-auto' variant='outline-primary' >share</Button>
+        </Card.Footer>} */}
       </Card>
+     
       </div>
     </div>
       </Col>

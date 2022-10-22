@@ -19,6 +19,8 @@ const userSchema = new Schema({
     },
    
     blogs:[{type: mongoose.Types.ObjectId, ref:"Blog",required:true}],
+
+    friends:[{type:mongoose.Types.ObjectId,ref:"User"}]
 });
 
 export default mongoose.model("User",userSchema);

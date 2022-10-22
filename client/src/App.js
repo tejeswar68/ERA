@@ -42,6 +42,7 @@ function App() {
         <Route path='/addblogs' element={<AddBlog/>}/>
         <Route path="/todos" element={<Todos/>}/>
         <Route path='/' element={<Home/>}/>
+        <Route path="add/friends" element={<addFriends/>}/>
           </>
         )}
        

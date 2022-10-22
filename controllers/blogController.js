@@ -27,7 +27,7 @@ export const addBlog = async (req, res, next) => {
       return console.log(err);
     }
     if (!existingUser) {
-      return res.status(400).json({ message: "Unable TO FInd User By This ID" });
+      return res.status(400).json({ message: "Unable To Find User By This ID" });
     }
     const blog = new Blog({
       title,
