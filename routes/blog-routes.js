@@ -6,7 +6,7 @@ blogRouter.get("/",getAllBlog);
 blogRouter.post("/add",addBlog);
 blogRouter.put('/update/:id',updateBlog);
 blogRouter.get('/:id',getBlogById);
-blogRouter.delete('/:id/:userid',deleteBlog);
+blogRouter.delete('/:id/',deleteBlog);
 blogRouter.get("/user/:id",getByUserId)
 
 export default blogRouter;

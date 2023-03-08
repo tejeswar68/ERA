@@ -99,7 +99,7 @@ export const getBlogById = async(req,res,next)=>
 export const deleteBlog = async(req,res,next) =>
 {
     const id = req.params.id;
-    const userid = req.params.userid;
+    const {userid} = req.body;
     let blog;
     try {
         blog = await Blog.findById(id);
