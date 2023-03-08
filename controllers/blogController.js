@@ -53,7 +53,7 @@ export const updateBlog = async(req,res,next)=>
 {
     const {title,description,user} = req.body;
     const blogId = req.params.id;
-    let blog;
+    var blog;
     try {
         blog = await Blog.findById(blogId);
     } catch (error) {
@@ -91,7 +91,7 @@ export const getBlogById = async(req,res,next)=>
     }
     if(!blog)
     {
-        return res.status(404),json({message:"NO BLOG FOUND!"});
+        return res.status(404).json({message:"NO BLOG FOUND!"});
     }
     return res.status(200).json({blog});
 }
@@ -100,7 +100,7 @@ export const deleteBlog = async(req,res,next) =>
 {
     const id = req.params.id;
     const {userid} = req.body;
-    let blog;
+    var blog;
     try {
         blog = await Blog.findById(id);
     } catch (error) {
