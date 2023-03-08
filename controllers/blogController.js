@@ -59,7 +59,7 @@ export const updateBlog = async(req,res,next)=>
     } catch (error) {
         return console.log(error);
     }
-    if(blog.user!==user)
+    if(blog.user!=user)
     return res.status(500).json({message:"Unable to update the blog huhahahaa"})
     try {
          blog = await Blog.findByIdAndUpdate(blogId,{
@@ -106,7 +106,7 @@ export const deleteBlog = async(req,res,next) =>
     } catch (error) {
         return console.log(error);
     }
-    if(blog.user!==userid)
+    if(blog.user!=userid)
     return res.status(500).json({message:"Unable to delete the blog huhahahaa"})
     try {
         blog = await Blog.findByIdAndRemove(id).populate('user');
