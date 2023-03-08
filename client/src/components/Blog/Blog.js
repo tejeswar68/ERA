@@ -15,7 +15,7 @@ function Blog({ title, description, image, userName, isUser, id, flag, reloadSto
     navigate(`/myblogs/${id}`)
   }
   const deleteRequest = async (id) => {
-    const res = await axios.delete(`https://era68.herokuapp.com/api/blog/${id}`).catch(err => console.log(err));
+    const res = await axios.delete(`https://era68.herokuapp.com/api/blog/${id}/${localStorage.getItem("userId")}`).catch(err => console.log(err));
     const data = res.data;
 
     return data;

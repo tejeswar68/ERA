@@ -51,9 +51,16 @@ export const addBlog = async (req, res, next) => {
   };
 export const updateBlog = async(req,res,next)=>
 {
-    const {title,description} = req.body;
+    const {title,description,user} = req.body;
     const blogId = req.params.id;
     let blog;
+    try {
+        blog = await Blog.findById(blogId);
+    } catch (error) {
+        return console.log(error);
+    }
+    if(blog.user!==user)
+    return res.status(500).json({message:"Unable to update the blog huhahahaa"})
     try {
          blog = await Blog.findByIdAndUpdate(blogId,{
             title,
@@ -75,6 +82,7 @@ export const getBlogById = async(req,res,next)=>
     const id = req.params.id;
 
     let blog;
+    
 
     try {
         blog = await Blog.findById(id);
@@ -91,8 +99,15 @@ export const getBlogById = async(req,res,next)=>
 export const deleteBlog = async(req,res,next) =>
 {
     const id = req.params.id;
-
+    const userid = req.params.userid;
     let blog;
+    try {
+        blog = await Blog.findById(id);
+    } catch (error) {
+        return console.log(error);
+    }
+    if(blog.user!==userid)
+    return res.status(500).json({message:"Unable to delete the blog huhahahaa"})
     try {
         blog = await Blog.findByIdAndRemove(id).populate('user');
         await blog.user.blogs.pull(blog);

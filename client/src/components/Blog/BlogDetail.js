@@ -36,7 +36,8 @@ function BlogDetail() {
       const res = await axios.put(`https://era68.herokuapp.com/api/blog/update/${id}`,
         {
           title: blogdetail.title,
-          description: blogdetail.description
+          description: blogdetail.description,
+          user:localStorage.getItem("userId")
         }).catch(err => console.log(err));
       const data = await res.data;
       return data;
